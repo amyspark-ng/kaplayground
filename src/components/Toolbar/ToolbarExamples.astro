@@ -3,8 +3,7 @@ import { examples } from "./examples";
 ---
 
 <select
-    id="example-select"
-    class="select select-bordered select-sm w-full max-w-48 lg:max-w-xs ml-2"
+    class="example-select | select select-bordered select-sm w-full ml-2"
     title="Choose an example"
 >
     <option selected disabled>Choose an example</option>
@@ -24,22 +23,27 @@ import { examples } from "./examples";
         $playgroundCode,
     } from "../../stores";
 
-    const select = document.querySelector<HTMLSelectElement>("#example-select");
-    const options = select?.querySelectorAll<HTMLOptionElement>("option");
+    const exampleSelects = document.querySelectorAll<HTMLSelectElement>(
+        ".example-select",
+    );
 
-    select?.addEventListener("change", () => {
-        const option = options?.[select.selectedIndex];
-        const example = option?.dataset.example;
-        const exampleCode = option?.dataset.code;
+    exampleSelects.forEach((select) => {
+        const options = select?.querySelectorAll<HTMLOptionElement>("option");
 
-        if (example) {
-            history.pushState({}, "", `?example=${example}`);
-        }
+        select.addEventListener("change", () => {
+            const option = options?.[select.selectedIndex];
+            const example = option?.dataset.example;
+            const exampleCode = option?.dataset.code;
 
-        if (exampleCode) {
-            $playgroundCode.set(exampleCode);
-            $editorInstance.get()?.setValue(exampleCode);
-            $gameViewElement.get()?.run();
-        }
+            if (example) {
+                history.pushState({}, "", `?example=${example}`);
+            }
+
+            if (exampleCode) {
+                $playgroundCode.set(exampleCode);
+                $editorInstance.get()?.setValue(exampleCode);
+                $gameViewElement.get()?.run();
+            }
+        });
     });
 </script>

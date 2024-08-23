@@ -21,3 +21,4 @@ export const $gameViewElement = atom<GameView | null>(null);
 export const $toastyElement = atom<Toasty | null>(null);
 export const $editorInstance = atom<null | editor.IStandaloneCodeEditor>(null);
 export const $editorTheme = atom("kaplayrk");
+export const $version = atom("v4000");

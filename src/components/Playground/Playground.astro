@@ -3,27 +3,41 @@ import AssetBrew from "../AssetBrew/AssetBrew.astro";
 import GameView from "../GameView/GameView.astro";
 import MonacoEditor from "../MonacoEditor/MonacoEditor.tsx";
 import Toolbar from "../Toolbar/Toolbar.astro";
+import ToolbarDown from "../Toolbar/ToolbarDown.astro";
 import Toasty from "../UI/Toasty.astro";
 ---
 
-<main class="flex flex-col h-screen" id="kaplayground">
+<main class="flex flex-col h-dvh" id="kaplayground">
     <Toolbar />
 
-    <div data-flex-splitter-horizontal id="wrapper">
-        <div class="w-1/2">
+    <div id="wrapper">
+        <div class="h-1/2 lg:w-1/2 lg:h-full">
             <MonacoEditor client:load />
         </div>
 
         <div role="separator" tabindex="1" />
 
-        <div class="w-1/2">
+        <div class="h-1/2 lg:w-1/2 lg:h-full">
             <GameView />
         </div>
     </div>
 
+    <ToolbarDown />
+
     <Toasty />
     <AssetBrew />
 </main>
+
+<script>
+    const wrapper = document.querySelector("#wrapper");
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+
+    if (isDesktop) {
+        wrapper?.setAttribute("data-flex-splitter-horizontal", "");
+    } else {
+        wrapper?.setAttribute("data-flex-splitter-vertical", "");
+    }
+</script>
 
 <script src="./loadUrl.ts"></script>
 <script src="./hotKeys.ts"></script>

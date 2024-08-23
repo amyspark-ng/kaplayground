@@ -31,7 +31,8 @@ const MonacoEditor: FC<{}> = () => {
             theme="kaplayrk"
             language={"javascript"}
             options={{
-                fontSize: 20,
+                fontSize: 16,
+                wordWrap: "on",
             }}
             defaultValue={$playgroundCode.get()}
             path={"main.js"}

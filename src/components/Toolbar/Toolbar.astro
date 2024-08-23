@@ -2,6 +2,7 @@
 import kaplaygroundLogo from "../../assets/logo/kaplayground-o.webp";
 import ToolbarExamples from "./ToolbarExamples.astro";
 import ToolbarMenu from "./ToolbarMenu.astro";
+import ToolbarVersionSelector from "./ToolbarVersionSelector.astro";
 ---
 
 <div
@@ -24,6 +25,12 @@ import ToolbarMenu from "./ToolbarMenu.astro";
         </figure>
     </a>
 
-    <ToolbarExamples />
+    <div class="hidden lg:flex w-fit">
+        <ToolbarExamples />
+        <ToolbarVersionSelector />
+    </div>
+
+    <div id="a"></div>
+
     <ToolbarMenu />
 </div>
