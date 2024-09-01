@@ -69,7 +69,8 @@
     "gamepad",
     "binding",
     "physics",
-    "physicsfactory"
+    "physicsfactory",
+    "fakeMouse"
   ],
   "hidden": [
     "fall"
